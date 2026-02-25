@@ -49,7 +49,19 @@ Process: [-->cat data.txt | grep <word>]
 What I learned: [-> using grep to narrow down output ]
 
 ## Level 8 → 9
-Command used: { ssh bandit8@bandit.labs.overthewire.org -p 2220, ls, cat, find, grep}  
-Password found: []  
-Process: [-->cat data.txt | grep <word>]
-What I learned: [-> using grep to narrow down output ]
+Command used: { ssh bandit8@bandit.labs.overthewire.org -p 2220, ls, cat, sort, uniq}  
+Password found: [4CKMh1JI91bUIZZPXDqGanal4xvAg0JM]  
+Process: [-->cat uesd to get data of the file which is piped to sort , which sorts the data , which is again piped to uniq -u which only prints the unique line (cat data.txt | sort | uniq -u)]
+What I learned: [-> using sort to sort the data of the file --> using uniq to get the unique element and count of the element from the file]
+
+## Level 9 → 10
+Command used: { ssh bandit9@bandit.labs.overthewire.org -p 2220, ls, strings, grep}  
+Password found: [FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey]  
+Process: [-->strings with -d can be used to reduce the amount of garbage in the file --> the output can be piped to grep "=" to look for "=" sign in the data (strings data.txt -d | grep "=") --> can be directly bruteforced too by just using cat (not good if the amount of garbage data in the file is too much)]
+What I learned: [->using strings -d to reduce the garabage data and only print the strings]
+
+## Level 10 → 11
+Command used: { ssh bandit10@bandit.labs.overthewire.org -p 2220, ls, base64}  
+Password found: [dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr]  
+Process: [-->the data is base64 encoded so simply use base64 -d <filename> to decode the data and print it ]
+What I learned: [->using base64 to encode and decode data in command line]
