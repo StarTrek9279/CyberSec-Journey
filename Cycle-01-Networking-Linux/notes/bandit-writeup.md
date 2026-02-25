@@ -33,4 +33,23 @@ Command used: { ssh bandit5@bandit.labs.overthewire.org -p 2220, ls, cat, du, gr
 Password found: [HWasnPhtq9AVKe0dmk45nxy20cvUa6EG]  
 Process: [-->cd inhere to enter the folder --> ls to check the contents of the folder ->du -a -b to list all the files and their size recursively from all the folders
 --> du -a -b | grep 1033 to pick the output of du -a -b where the size is 1033 bytes -> cd to enter the directory and cat used to check the contents of the file]
-What I learned: [-> how to list files recursively in a folder (du) --> how to list files along with their size (recursively) --> using | (pipe) to pipe down the output of one command as the input of another --> using grep to find a text (word or line) in a a stream of output (prints the whole line)
+What I learned: [-> how to list files recursively in a folder (du) --> how to list files along with their size (recursively) --> using | (pipe) to pipe down the output of one command as the input of another --> using grep to find a text (word or line) in a a stream of output (prints the whole line)]
+
+## Level 6 → 7
+Command used: { ssh bandit6@bandit.labs.overthewire.org -p 2220, ls, cat, find, grep}  
+Password found: [morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj]  
+Process: [-->find / -group bandit6 -user bandit7 -size 33c ( or move to the / directory using cd ../.. then run the find command directly
+--> the output which doesnt has permission denied has the password to the next level) ]
+What I learned: [-> finding file by their owner,group,size etc ]
+
+## Level 7 → 8
+Command used: { ssh bandit7@bandit.labs.overthewire.org -p 2220, ls, cat, find, grep}  
+Password found: [dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc]  
+Process: [-->cat data.txt | grep <word>]
+What I learned: [-> using grep to narrow down output ]
+
+## Level 8 → 9
+Command used: { ssh bandit8@bandit.labs.overthewire.org -p 2220, ls, cat, find, grep}  
+Password found: []  
+Process: [-->cat data.txt | grep <word>]
+What I learned: [-> using grep to narrow down output ]
