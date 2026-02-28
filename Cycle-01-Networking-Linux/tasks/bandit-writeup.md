@@ -1,0 +1,67 @@
+## Level 0 → 1
+Command used: { ssh bandit0@bandit.labs.overthewire.org -p 2220, ls, cat}  
+Password found: [ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If]  
+Process: [--> ls used to list the files in the directory --> cat used to display the content of the readme file]
+What I learned: [-> how to list the files in the given directory and how to display the contents of the file ]
+
+## Level 1 → 2
+Command used: { ssh bandit1@bandit.labs.overthewire.org -p 2220, ls, cat}  
+Password found: [263JGJPfgU6LtdEvgfWU1XP5yac29mFx]  
+Process: [--> ls used to list the files in the directory --> cat ./- used to display the contents of the file with a dashed filename ]
+What I learned: [-> how to open a file with a dash in its name while using a terminal ]
+
+## Level 2 → 3
+Command used: { ssh bandit2@bandit.labs.overthewire.org -p 2220, ls, cat}  
+Password found: [MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx]  
+Process: [--> ls used to list the files in the directory -->backslash "\" just before the spaces can be used to escape the space (cat ./--spaces\ in....) ]
+What I learned: [-> opening a file with space and dash in its name]
+
+## Level 3 → 4
+Command used: { ssh bandit3@bandit.labs.overthewire.org -p 2220, ls, cat}  
+Password found: [2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ]  
+Process: [--> ls -al used to list all the files in the directory(even the hidden files) -->cd inhere to enter the hidden folder then used cat ./<filename> see the contents of the file]
+What I learned: [-> listing a hidden directory using ls]
+
+## Level 4 → 5
+Command used: { ssh bandit4@bandit.labs.overthewire.org -p 2220, ls, cat, file}  
+Password found: [4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw]  
+Process: [-->cd inhere to enter the folder --> ls to check the contents of the folder -> check individual files file type using (file ./<file_name>) or use (file ./*) to see the file type of all the files in the directory --> use cat to see the contents of the file which is ASCII text type]
+What I learned: [-> how to check the type of file using the file command (individually and all at once)]
+
+## Level 5 → 6
+Command used: { ssh bandit5@bandit.labs.overthewire.org -p 2220, ls, cat, du, grep}  
+Password found: [HWasnPhtq9AVKe0dmk45nxy20cvUa6EG]  
+Process: [-->cd inhere to enter the folder --> ls to check the contents of the folder ->du -a -b to list all the files and their size recursively from all the folders
+--> du -a -b | grep 1033 to pick the output of du -a -b where the size is 1033 bytes -> cd to enter the directory and cat used to check the contents of the file]
+What I learned: [-> how to list files recursively in a folder (du) --> how to list files along with their size (recursively) --> using | (pipe) to pipe down the output of one command as the input of another --> using grep to find a text (word or line) in a a stream of output (prints the whole line)]
+
+## Level 6 → 7
+Command used: { ssh bandit6@bandit.labs.overthewire.org -p 2220, ls, cat, find, grep}  
+Password found: [morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj]  
+Process: [-->find / -group bandit6 -user bandit7 -size 33c ( or move to the / directory using cd ../.. then run the find command directly
+--> the output which doesnt has permission denied has the password to the next level) ]
+What I learned: [-> finding file by their owner,group,size etc ]
+
+## Level 7 → 8
+Command used: { ssh bandit7@bandit.labs.overthewire.org -p 2220, ls, cat, find, grep}  
+Password found: [dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc]  
+Process: [-->cat data.txt | grep <word>]
+What I learned: [-> using grep to narrow down output ]
+
+## Level 8 → 9
+Command used: { ssh bandit8@bandit.labs.overthewire.org -p 2220, ls, cat, sort, uniq}  
+Password found: [4CKMh1JI91bUIZZPXDqGanal4xvAg0JM]  
+Process: [-->cat uesd to get data of the file which is piped to sort , which sorts the data , which is again piped to uniq -u which only prints the unique line (cat data.txt | sort | uniq -u)]
+What I learned: [-> using sort to sort the data of the file --> using uniq to get the unique element and count of the element from the file]
+
+## Level 9 → 10
+Command used: { ssh bandit9@bandit.labs.overthewire.org -p 2220, ls, strings, grep}  
+Password found: [FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey]  
+Process: [-->strings with -d can be used to reduce the amount of garbage in the file --> the output can be piped to grep "=" to look for "=" sign in the data (strings data.txt -d | grep "=") --> can be directly bruteforced too by just using cat (not good if the amount of garbage data in the file is too much)]
+What I learned: [->using strings -d to reduce the garabage data and only print the strings]
+
+## Level 10 → 11
+Command used: { ssh bandit10@bandit.labs.overthewire.org -p 2220, ls, base64}  
+Password found: [dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr]  
+Process: [-->the data is base64 encoded so simply use base64 -d <filename> to decode the data and print it ]
+What I learned: [->using base64 to encode and decode data in command line]
